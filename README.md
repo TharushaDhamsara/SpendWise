@@ -1,56 +1,66 @@
-# Welcome to your Expo app 👋
+SpendWise: Personal Expense and Income Tracking Application
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+SpendWise is a cross-platform mobile application developed using React Native, Expo, and Expo Router. The system enables users to monitor personal financial transactions, record income and expenses, review categorized transaction lists, and receive local notifications upon data entry.
 
-## Get started
+System Features and Requirements
 
-1. Install dependencies
+Navigation and Routing:
 
-   ```bash
-   npm install
-   ```
+Utilizes Expo Router to structure the application using bottom tabs for primary navigation and a nested stack layout for secondary detail views.
 
-2. Start the app
+Master List and Filtering:
 
-   ```bash
-   npx expo start
-   ```
+Implements FlatList components for rendering transaction records.
 
-In the output, you'll find options to open the app in a
+Includes a Modal component enabling users to filter financial records by category and transaction type.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Background and Foreground State Management:
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Incorporates the React Native AppState API to monitor application lifecycle changes and detect when the software resumes from background states.
 
-## Get a fresh project
+Local Notifications:
 
-When you're ready, run:
+Integrates the expo-notifications module to dispatch alerts upon successfully saving income or expense records.
 
-```bash
-npm run reset-project
-```
+Persistent Local Storage:
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Employs AsyncStorage to save transaction data locally on the device, ensuring state consistency across screen navigation.
 
-### Other setup steps
+Project Directory Structure
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+src/
+└── app/
+    ├── _layout.tsx                 # Root layout for stack navigation
+    ├── transaction-detail.tsx      # Static detail view screen
+    └── (tabs)/                     # Tab route group container
+        ├── _layout.tsx             # Bottom tab configuration and icons
+        ├── index.tsx               # Dashboard screen with AppState listener
+        ├── transactions.tsx        # Master list screen with FlatList and Modal
+        └── add.tsx                 # Form screen for data entry and notifications
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+Setup and Installation Instructions
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Open the project directory in your terminal:
 
-## Join the community
+cd SpendWise/SpendWise
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Install dependencies:
+
+npm install
+
+
+Install required Expo packages:
+
+npx expo install @expo/vector-icons expo-notifications @react-native-async-storage/async-storage
+
+
+Run the development server:
+
+npx expo start
+
+
+Demonstration Video
+
+Link: [https://drive.google.com/file/d/1iYFXbHJqHk1X9LQ-ZMUpvcZB21SevfQO/view?usp=sharing]
